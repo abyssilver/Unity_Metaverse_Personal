@@ -6,8 +6,8 @@ public class FollowZoomCamera : MonoBehaviour
 {
 
     public Transform target;
-    float offsetX;
-    float offsetY;
+    //float offsetX;
+    //float offsetY;
 
     public float zoomSpeed = 2f;
     public float minSize = 3f;
@@ -20,11 +20,11 @@ public class FollowZoomCamera : MonoBehaviour
     {
         _camera = Camera.main;
 
-        if (target != null)
-        {
-            offsetX = transform.position.x - target.position.x;
-            offsetY = transform.position.y - target.position.y;
-        }
+        //if (target != null)
+        //{
+        //    offsetX = transform.position.x - target.position.x;
+        //    offsetY = transform.position.y - target.position.y;
+        //}
     }
 
     // Update is called once per frame
@@ -41,9 +41,12 @@ public class FollowZoomCamera : MonoBehaviour
 
         if (target != null)
         {
-            Vector3 pos = transform.position;
-            pos.x = target.position.x + offsetX;
-            pos.y = target.position.y + offsetY;
+            //Vector3 pos = transform.position;
+            //pos.x = target.position.x + offsetX;
+            //pos.y = target.position.y + offsetY;
+            //transform.position = pos;
+
+            Vector3 pos = new Vector3(target.position.x, target.position.y, transform.position.z);
             transform.position = pos;
         }
     }
