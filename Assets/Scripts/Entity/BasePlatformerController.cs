@@ -37,7 +37,7 @@ public class BasePlatformerController : BaseController
     }
     protected override void Movment(Vector2 direction)
     {
-        float moveX = direction.x * 5f;
+        float moveX = direction.x * statHandler.Speed;
         float moveY = _rigidbody.velocity.y;
 
         if (knockbackDuration > 0.0f)

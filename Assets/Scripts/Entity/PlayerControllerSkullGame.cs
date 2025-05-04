@@ -27,6 +27,6 @@ public class PlayerControllerSkullGame : BasePlatformerController
         Vector2 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos);
         lookDirection = (mouseWorldPos - (Vector2)transform.position).normalized;
 
-
+        isAttacking = Input.GetMouseButton(0);
     }
 }

@@ -716,6 +716,8 @@ GameObject:
   - component: {fileID: 2072514084}
   - component: {fileID: 2072514083}
   - component: {fileID: 2072514087}
+  - component: {fileID: 2072514088}
+  - component: {fileID: 2072514089}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -838,10 +840,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 1772712084}
   weaponPivot: {fileID: 1355652407}
+  WeaponPrefab: {fileID: 21341976228659655, guid: 855873dfe81b3e64c8bc81508a451264, type: 3}
   jumpForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &2072514088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072514082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7d3eb6e58099849b9dc92761ec1dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  speed: 3
+--- !u!114 &2072514089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072514082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3405a2f7324884ebf1179ab2161fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
 --- !u!1 &2090571892
 GameObject:
   m_ObjectHideFlags: 0
