@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FollowZoomCamera : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class FollowZoomCamera : MonoBehaviour
     public float minSize = 3f;
     public float maxSize = 9f;
 
+    public Vector2 minClamp;
+    public Vector2 maxClamp;
+
     private Camera _camera;
+
+   
+    private Bounds _bounds;
 
     // Start is called before the first frame update
     void Start()
@@ -49,5 +56,19 @@ public class FollowZoomCamera : MonoBehaviour
             Vector3 pos = new Vector3(target.position.x, target.position.y, transform.position.z);
             transform.position = pos;
         }
+
+        if (target == null)
+            return;
+
+        // 카메라 크기 계산
+        float halfHeight = _camera.orthographicSize;
+        float halfWidth = halfHeight * _camera.aspect;
+
+        // 플레이어 위치 기준으로 Clamp 적용
+        float clampedX = Mathf.Clamp(target.position.x, minClamp.x + halfWidth, maxClamp.x - halfWidth);
+        float clampedY = Mathf.Clamp(target.position.y, minClamp.y + halfHeight, maxClamp.y - halfHeight);
+
+        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 }
+
