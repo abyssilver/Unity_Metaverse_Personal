@@ -15,8 +15,8 @@ public class BaseController : MonoBehaviour
     protected Vector2 lookDirection = Vector2.zero;
     public Vector2 LookDirection { get { return lookDirection; } }
 
-    private Vector2 knockback = Vector2.zero;
-    private float knockbackDuration = 0.0f;
+    protected Vector2 knockback = Vector2.zero;
+    protected float knockbackDuration = 0.0f;
 
     protected AnimationHandler animationHandler;
 
@@ -25,13 +25,13 @@ public class BaseController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<AnimationHandler>();
     }
-    // Start is called before the first frame update
+    
     protected virtual void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     protected virtual void Update()
     {
         HandleAction();
@@ -52,7 +52,7 @@ public class BaseController : MonoBehaviour
 
     }
 
-    private void Movment(Vector2 direction)
+    protected virtual void Movment(Vector2 direction)
     {
         direction = direction * 5;
         if (knockbackDuration > 0.0f)
