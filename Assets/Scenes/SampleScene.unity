@@ -1520,7 +1520,7 @@ GameObject:
   - component: {fileID: 572840587}
   - component: {fileID: 572840586}
   - component: {fileID: 572840588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12188,7 +12188,7 @@ Tilemap:
       - {fileID: 21300000, guid: 1a91d34d6537f6c489a311e4272f6fa6, type: 3}
       - {fileID: 21300000, guid: d650618eda69b024cb641ddc02da48ed, type: 3}
       - {fileID: 21300000, guid: 66ccaf51d9fd88d44aa855eff6ff8a76, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -14556,6 +14556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 1092942394}
   weaponPivot: {fileID: 833154308}
+  WeaponPrefab: {fileID: 0}
 --- !u!114 &1926021134
 MonoBehaviour:
   m_ObjectHideFlags: 0
