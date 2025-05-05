@@ -16,6 +16,8 @@ public class MovingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!MinigameManager.GameStarted)
+            return;
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
 
         if (transform.position.x <= resetPositionX)

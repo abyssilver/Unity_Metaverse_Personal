@@ -12,7 +12,7 @@ public class GroundSpawn : MonoBehaviour
     public float maxSpawnDelay = 5f;
 
     public float minY = -6f;
-    public float maxY = 1f;
+    public float maxY = 0f;
 
     private float timer;
     private float nextSpawnTime;
@@ -26,6 +26,8 @@ public class GroundSpawn : MonoBehaviour
     
     void Update()
     {
+        if (!MinigameManager.GameStarted)
+            return;
         timer += Time.deltaTime;
 
         if(timer >= nextSpawnTime)

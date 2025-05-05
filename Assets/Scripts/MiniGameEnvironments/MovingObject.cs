@@ -17,6 +17,8 @@ public class MovingObject : MonoBehaviour
     
     void Update()
     {
+        if (!MinigameManager.GameStarted)
+            return;
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
 
         if (transform.position.x < -30f)

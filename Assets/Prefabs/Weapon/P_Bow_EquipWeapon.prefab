@@ -155,7 +155,7 @@ MonoBehaviour:
   delay: 0.5
   weaponSize: 0.7
   power: 5
-  speed: 10
+  speed: 15
   attackRange: 10
   target:
     serializedVersion: 2

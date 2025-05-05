@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerControllerSkullGame : BasePlatformerController
 {
+    private MinigameManager minigameManager;
     private Camera camera;
 
-    protected override void Start()
+    public void Init(MinigameManager minigameManager)
     {
-        base.Start();
+        this.minigameManager = minigameManager;
         camera = Camera.main;
     }
 
@@ -28,5 +29,11 @@ public class PlayerControllerSkullGame : BasePlatformerController
         lookDirection = (mouseWorldPos - (Vector2)transform.position).normalized;
 
         isAttacking = Input.GetMouseButton(0);
+    }
+
+    public override void Death()
+    {
+        base.Death();
+        minigameManager.GameOver();
     }
 }
