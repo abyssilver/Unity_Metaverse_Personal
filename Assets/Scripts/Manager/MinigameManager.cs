@@ -16,10 +16,14 @@ public class MinigameManager : MonoBehaviour
 
     private UIManager uiManager;
     public static bool isFirstLoading = true;
+    
+    public int lastClearedWave = 0;
 
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
+
         player = FindObjectOfType<PlayerControllerSkullGame>();
         player.Init(this);
 
@@ -67,6 +71,7 @@ public class MinigameManager : MonoBehaviour
 
     public void GameOver()
     {
+        lastClearedWave = currentWaveIndex;
         enemyManager.StopWave();
         uiManager.SetGameOver();
     }
