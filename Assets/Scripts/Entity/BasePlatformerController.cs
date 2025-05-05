@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasePlatformerController : BaseController
 {
+    [Header("낙사 판정 설정")]
+    [SerializeField] private float deathYThreshold = -13f;
 
     [Header("점프 관련 설정")]
     [SerializeField] protected float jumpForce = 6f;
@@ -11,7 +13,15 @@ public class BasePlatformerController : BaseController
 
     protected bool isGrounded = false;
 
+    protected virtual void Update()
+    {
+        base.Update();
 
+        if (transform.position.y < deathYThreshold)
+        {
+            Death();
+        }
+    }
     protected virtual void FixedUpdate()
     {
         base.FixedUpdate();
