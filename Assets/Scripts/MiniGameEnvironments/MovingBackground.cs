@@ -18,6 +18,8 @@ public class MovingBackground : MonoBehaviour
     {
         if (!MinigameManager.GameStarted)
             return;
+        if (MinigameManager.GameOvered)
+            return;
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
 
         if (transform.position.x <= resetPositionX)

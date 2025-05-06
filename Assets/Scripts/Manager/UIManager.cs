@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum UIState
 {
@@ -26,9 +27,25 @@ public class UIManager : MonoBehaviour
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
 
-        ChangeState(UIState.Home);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        //ChangeState(UIState.Home);
+    }
+    //private void OnEnable()
+    //{
+    //    // 씬이 로드될 때마다 호출
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    // 씬 로드 완료 시 항상 Home UI 상태로 초기화
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ChangeState(UIState.Home);
+    }
     public void SetPlayGame()
     {
         ChangeState(UIState.Game);

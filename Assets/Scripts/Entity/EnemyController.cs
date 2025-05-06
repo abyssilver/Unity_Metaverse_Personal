@@ -8,6 +8,9 @@ public class EnemyController : BaseController
     private Transform target;
 
     [SerializeField] private float followRange = 15f;
+    [SerializeField] private int monsterScore = 1;
+    public string monsterType;
+
 
     public void Init(EnemyManager enemyManager, Transform target)
     {
@@ -65,6 +68,7 @@ public class EnemyController : BaseController
 
     public override void Death()
     {
+        ScoreManager.Instance.AddMonsterScore(monsterType, monsterScore);
         base.Death();
         enemyManager.RemoveEnemyOnDeath(this);
     }

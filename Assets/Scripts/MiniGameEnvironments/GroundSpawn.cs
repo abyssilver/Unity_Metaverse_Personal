@@ -28,6 +28,8 @@ public class GroundSpawn : MonoBehaviour
     {
         if (!MinigameManager.GameStarted)
             return;
+        if (MinigameManager.GameOvered)
+            return;
         timer += Time.deltaTime;
 
         if(timer >= nextSpawnTime)

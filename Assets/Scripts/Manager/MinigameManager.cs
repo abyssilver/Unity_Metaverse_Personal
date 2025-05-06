@@ -6,6 +6,7 @@ public class MinigameManager : MonoBehaviour
 {
     public static MinigameManager instance;
     public static bool GameStarted { get; private set; } = false;
+    public static bool GameOvered { get; private set; } = false;
 
     public PlayerControllerSkullGame player { get; private set; }
     private ResourceController _playerResourceController;
@@ -13,16 +14,15 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private int currentWaveIndex = 0;
 
     private EnemyManager enemyManager;
+    private EnemyController enemyController;
 
     private UIManager uiManager;
     public static bool isFirstLoading = true;
     
-    public int lastClearedWave = 0;
 
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
 
         player = FindObjectOfType<PlayerControllerSkullGame>();
         player.Init(this);
@@ -39,14 +39,14 @@ public class MinigameManager : MonoBehaviour
 
     private void Start()
     {
-        if (!isFirstLoading)
-        {
-            StartGame();
-        }
-        else
-        {
-            isFirstLoading = false;
-        }
+        //if (!isFirstLoading)
+        //{
+        //    StartGame();
+        //}
+        //else
+        //{
+        //    isFirstLoading = false;
+        //}
     }
 
     public void StartGame()
@@ -54,6 +54,8 @@ public class MinigameManager : MonoBehaviour
         
         uiManager.SetPlayGame();
         GameStarted = true;
+        GameOvered = false;
+        ScoreManager.Instance.StartGame();
         StartNextWave();
     }
 
@@ -71,8 +73,10 @@ public class MinigameManager : MonoBehaviour
 
     public void GameOver()
     {
-        lastClearedWave = currentWaveIndex;
+        ScoreManager.Instance.LastClearWave = currentWaveIndex;
+        ScoreManager.Instance.OnGameOver();
         enemyManager.StopWave();
+        GameOvered = true;
         uiManager.SetGameOver();
     }
 

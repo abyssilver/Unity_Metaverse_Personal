@@ -17,7 +17,10 @@ public class MovingObject : MonoBehaviour
     
     void Update()
     {
+        
         if (!MinigameManager.GameStarted)
+            return;
+        if (MinigameManager.GameOvered)
             return;
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
 
@@ -25,5 +28,6 @@ public class MovingObject : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+        
     }
 }

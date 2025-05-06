@@ -272,6 +272,8 @@ MonoBehaviour:
   weaponPivot: {fileID: 9169285148789113711}
   WeaponPrefab: {fileID: 21341976228659655, guid: 8759b5a08ee891f48beb16a17945f5aa, type: 3}
   followRange: 15
+  monsterScore: 1
+  monsterType: "\uCC9C\uC0AC"
 --- !u!1 &4180670989713685636
 GameObject:
   m_ObjectHideFlags: 0
