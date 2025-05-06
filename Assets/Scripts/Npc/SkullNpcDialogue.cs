@@ -27,7 +27,7 @@ public class SkullNpcDialogue : MonoBehaviour
         //if (MinigameManager.instance != null)
         //    clearedWave = MinigameManager.instance.lastClearedWave;
 
-        dialogueText.text = $"test ttest!";
+        dialogueText.text = $"미니게임을 진행하려면 방안의 분수를 살펴봐!";
         dialogueUI.SetActive(true);
     }
 

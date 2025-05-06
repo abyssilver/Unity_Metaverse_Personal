@@ -30,11 +30,6 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         //ChangeState(UIState.Home);
     }
-    //private void OnEnable()
-    //{
-    //    // 씬이 로드될 때마다 호출
-    //    SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
 
     private void OnDestroy()
     {
