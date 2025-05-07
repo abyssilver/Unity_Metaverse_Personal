@@ -17,6 +17,8 @@ public class ResourceController : MonoBehaviour
     public float MaxHealth => statHandler.Health;
 
     private Action<float, float> OnChangeHealth;
+    
+    public AudioClip damageClip;
 
     private void Awake()
     {
@@ -59,6 +61,8 @@ public class ResourceController : MonoBehaviour
         if (change < 0)
         {
             animationHandler.Damage();
+            if (damageClip != null)
+                SoundManager.PlayClip(damageClip);
 
         }
 

@@ -96,9 +96,7 @@ public class PlayerSkinManager : MonoBehaviour
 
     private void RefreshPreview()
     {
-        if (previewImage != null
-         && previewSprites != null
-         && previewSprites.Length == skinControllers.Length)
+        if (previewImage != null && previewSprites != null && previewSprites.Length == skinControllers.Length)
         {
             previewImage.sprite = previewSprites[currentIndex];
         }
