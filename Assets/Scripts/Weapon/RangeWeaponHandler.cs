@@ -29,15 +29,30 @@ public class RangeWeaponHandler : WeaponHandler
     public Color ProjectileColor { get { return projectileColor; } }
 
     private ProjectileManager projectileManager;
+
+    private int baseProjectilesPerShot;
+
+    
+
+    protected override void Awake()
+    {
+        base.Awake();
+        baseProjectilesPerShot = numberofProjectilesPerShot;
+    }
     protected override void Start()
     {
         base.Start();
         projectileManager = ProjectileManager.Instance;
     }
+    public void AddProjectiles(int amount)
+    {
+        numberofProjectilesPerShot += amount;
+    }
 
     public override void Attack()
     {
         base.Attack();
+
 
         float projectilesAngleSpace = multipleProjectilesAngel;
         int numberOfProjectilesPerShot = numberofProjectilesPerShot;
@@ -65,4 +80,13 @@ public class RangeWeaponHandler : WeaponHandler
     {
         return Quaternion.Euler(0, 0, degree) * v;
     }
+
+    public override void ResetWeaponStats()
+    {
+        base.ResetWeaponStats();
+        numberofProjectilesPerShot = baseProjectilesPerShot;
+
+    }
+    
+
 }

@@ -41,6 +41,16 @@ public class WeaponHandler : MonoBehaviour
 
     public AudioClip attackSoundClip;
 
+    private float baseDelay;
+    private float basePower;
+    private float baseSpeed;
+    private float baseAttackRange;
+
+    public void AddPower(float amount) => Power += amount;
+    public void AddSpeed(float amount) => Speed += amount;
+    public void AddRange(float amount) => AttackRange += amount;
+    public void ReduceDelay(float amount) => Delay = Mathf.Max(0.01f, Delay - amount);
+
     protected virtual void Awake()
     {
         Controller = GetComponentInParent<BaseController>();
@@ -49,6 +59,11 @@ public class WeaponHandler : MonoBehaviour
 
         animator.speed = 1.0f / delay;
         transform.localScale = Vector3.one * weaponSize;
+
+        baseDelay = Delay;
+        basePower = Power;
+        baseSpeed = Speed;
+        baseAttackRange = AttackRange;
     }
 
     protected virtual void Start()
@@ -72,5 +87,13 @@ public class WeaponHandler : MonoBehaviour
     public virtual void Rotate(bool isLeft)
     {
         weaponRenderer.flipY = isLeft;
+    }
+    public virtual void ResetWeaponStats()
+    {
+        Delay = baseDelay;
+        Power = basePower;
+        Speed = baseSpeed;
+        AttackRange = baseAttackRange;
+
     }
 }
