@@ -12,7 +12,7 @@ public class BasePlatformerController : BaseController
     [SerializeField] protected LayerMask groundLayer;
 
     protected bool isGrounded = false;
-
+    public AudioClip jumpClip;
     protected virtual void Update()
     {
         base.Update();
@@ -38,6 +38,9 @@ public class BasePlatformerController : BaseController
         if (isGrounded)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+
+            if(jumpClip != null)
+                SoundManager.PlayClip(jumpClip);
         }
     }
 

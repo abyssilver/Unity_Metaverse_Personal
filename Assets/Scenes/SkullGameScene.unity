@@ -6180,6 +6180,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  jumpClip: {fileID: 8300000, guid: 27abb4becd1f7c14b8bd03f9370b7aae, type: 3}
 --- !u!114 &2072514088
 MonoBehaviour:
   m_ObjectHideFlags: 0
