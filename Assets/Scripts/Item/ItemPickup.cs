@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
 
     [SerializeField] private int extraArrowCount = 1;
-    [SerializeField] private float extraPower = 1f;
+    [SerializeField] private float extraPower = 3f;
 
     [SerializeField] private float destroyDelay = 0.5f;
 
+    [SerializeField] private GameObject floatingTextPrefab;
+    [SerializeField] private Vector3 textOffset = new Vector3(0, 1.5f, 0);
     private Animator animator;
 
     public AudioClip openSoundClip;
@@ -52,12 +55,12 @@ public class ItemPickup : MonoBehaviour
             if (choice == 0)
             {
                 rangeHandler.AddProjectiles(extraArrowCount);
-                Debug.Log($"아이템 획득! 발사체 수 +{extraArrowCount}");
+                ShowFloatingText(other.transform, $"+{extraArrowCount} 발사체");
             }
             else
             {
                 rangeHandler.AddPower(extraPower);
-                Debug.Log($"아이템 획득! 파워 +{extraPower}");
+                ShowFloatingText(other.transform, $"+{extraPower} 파워");
             }
 
         }
@@ -75,5 +78,14 @@ public class ItemPickup : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyDelay);
         Destroy(gameObject);
+    }
+
+    private void ShowFloatingText(Transform player, string message)
+    {
+        if (floatingTextPrefab == null) return;
+        var go = Instantiate(floatingTextPrefab, player.position + textOffset, Quaternion.identity);
+        var tmp = go.GetComponentInChildren<TMP_Text>();
+        if (tmp != null) tmp.text = message;
+        Destroy(go, 1f);
     }
 }

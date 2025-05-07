@@ -275,6 +275,8 @@ MonoBehaviour:
   followRange: 15
   monsterScore: 1
   monsterType: "\uCC9C\uC0AC"
+  dropItemPrefab: {fileID: 4533987002996332346, guid: f5177ee5c7672614a9daf694108563b2, type: 3}
+  dropChance: 0.3
 --- !u!1 &4180670989713685636
 GameObject:
   m_ObjectHideFlags: 0

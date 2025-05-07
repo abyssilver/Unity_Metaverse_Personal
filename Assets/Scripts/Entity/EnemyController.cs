@@ -11,7 +11,8 @@ public class EnemyController : BaseController
     [SerializeField] private int monsterScore = 1;
     public string monsterType;
 
-
+    [SerializeField] private GameObject dropItemPrefab;
+    [SerializeField] private float dropChance = 0.3f;
     public void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
@@ -69,6 +70,10 @@ public class EnemyController : BaseController
     public override void Death()
     {
         ScoreManager.Instance.AddMonsterScore(monsterType, monsterScore);
+        if (dropItemPrefab != null && Random.value < dropChance)
+        {
+            Instantiate(dropItemPrefab, transform.position, Quaternion.identity);
+        }
         base.Death();
         enemyManager.RemoveEnemyOnDeath(this);
     }
