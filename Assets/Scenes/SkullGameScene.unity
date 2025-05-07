@@ -3311,7 +3311,7 @@ MonoBehaviour:
     x: -12
     y: 1
     width: 26
-    height: 8
+    height: 6
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   timeBetweenSpawns: 0.2
   timeBetweenWaves: 1
